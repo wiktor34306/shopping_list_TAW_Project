@@ -2,6 +2,5 @@
 body {
     background-image: url("../src/app/components/home/rozmytykoszyk.jpg");
     background-repeat: inherit;
-    background-position: center center;
     background-size: cover;
 }
