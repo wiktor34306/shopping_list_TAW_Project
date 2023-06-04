@@ -4,7 +4,7 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-// import routes from './REST/routes';
+import routes from './REST/routes';
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
@@ -17,31 +17,28 @@ app.use(express.static('public'));
 
 app.use(cors());
 
-mongoose.connect(config.databaseUrl, {
-    useNewUrlParser: true
-}, (error) => {
-    if (error) {
-        console.error(error);
-    }
-    else {
-        console.info('Połączono się z ustawioną bazą danych');
-    }
-});
-
-process.on('SIGINT', () => {
-    mongoose.connection.close(function () {
-        console.error('Domyślne połączenie Mongoose zostało rozłączone z powodu zamknięcia aplikacji');
-        process.exit(0);
-    });
-});
-
-
-// routes(app);
-
-app.get('/*', function (req, res) {
+try {
+    mongoose.connect(config.databaseUrl)
+    console.log('Mongo connected')
+ } catch (error) {
+    console.log(error)
+    process.exit()
+ }
+ 
+ process.on('SIGINT', () => {
+    mongoose.connection.close();
+    console.error('Mongoose default connection disconnected through app termination');
+    process.exit(0);
+ });
+ 
+ 
+ routes(app);
+ 
+ app.get('/*', function (req, res) {
   res.sendFile(__dirname + '/public/index.html');
-});
-
-app.listen(config.port, function () {
-  console.info(`Serwer działa na porcie ${config.port}`)
-});
+ });
+ 
+ app.listen(config.port, function () {
+  console.info(`Server is running at ${config.port}`)
+ });
+ 
