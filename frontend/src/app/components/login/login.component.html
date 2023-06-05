@@ -1,6 +1,6 @@
 <div class="container mt-4">
 
-    <h1>Logowanie</h1>
+    <h1>Logging form</h1>
     <form>
         <div class="form-group">
             <label>Nickname</label>
@@ -11,6 +11,9 @@
             <label>Password</label>
             <input type="password" [(ngModel)]="credentials.password" [ngModelOptions]="{standalone: true}" class="form-control" id="phone" placeholder="Your password">
         </div>
-        <button (click)="signIn()" type="submit" class="btn btn-primary mt-4">Sign in</button>
-    </form>
+        <div class="rl_button">
+        <button (click)="signIn()" type="submit" class="btn btn-success mt-4">Sign in</button>
+        <button name="Submit" type="reset" class="btn btn-success mt-4">Clear</button>
+   </div> 
+</form>
 </div>

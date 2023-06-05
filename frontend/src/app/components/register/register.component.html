@@ -1,6 +1,6 @@
 <div class="container mt-4">
 
-        <h1>Rejestracja</h1>
+        <h1>Registration form</h1>
         <form>
             <div class="form-group">
                 <label>Nickname</label>
@@ -16,6 +16,9 @@
                 <label>Password</label>
                 <input type="password" [(ngModel)]="credentials.password" [ngModelOptions]="{standalone: true}" class="form-control" id="phone" placeholder="Your password">
             </div>
-            <button (click)="create()" name="Submit" type="submit" class="btn btn-primary">Register</button>
+            <div class="rl_button">
+            <button (click)="create()" name="Submit" type="submit" class="btn btn-primary mt-4">Register</button>
+            <button name="Submit" type="reset" class="btn btn-primary mt-4">Clear</button>
+        </div>
         </form>
 </div>

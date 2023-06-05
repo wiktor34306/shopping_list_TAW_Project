@@ -1,0 +1,15 @@
+#homelist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#homelist img {
+    width: 300px;
+    height: 300px;
+  }
+
+#header {
+    letter-spacing: 0.2cm;
+    font-family: 'Arial';
+}

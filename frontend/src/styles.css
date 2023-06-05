@@ -1,6 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-image: url("../src/app/components/home/rozmytykoszyk.jpg");
+    background-image: url("../src/assets/images/rozmytykoszyk.jpg");
     background-repeat: inherit;
     background-size: cover;
 }
+
+.container {
+  margin-top: 8%;
+}
+
+.rl_button {
+    text-align: center;
+  }
+  
+  .rl_button button {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+
+/* można również w komponencie navbar.component.html stworzyć pustego diva o takim id i wtedy usunąć znacznik img z tego dokumentu */
+/* #shopping-list-icon{
+    background-image: url("../src/assets/images/shopping-list-icon.png");
+    background-size: cover;
+    width: 45px;
+    height: 45px;
+} */ 
