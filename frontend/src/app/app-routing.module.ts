@@ -7,6 +7,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { AuthGuard } from './services/auth.guard';
+import { AddItemToListComponent } from './components/add-item-to-list/add-item-to-list.component';
+import { HistoryOfDeletedItemsComponent } from './components/history-of-deleted-items/history-of-deleted-items.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,17 @@ const routes: Routes = [
     path: 'shopping-list',
     component: ShoppingListComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'add-item-to-list',
+    component: AddItemToListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'history-of-deleted-items',
+    component: HistoryOfDeletedItemsComponent,
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
