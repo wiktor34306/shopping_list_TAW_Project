@@ -1,4 +1,5 @@
 import userManager from './user.manager';
+import productsManager from './products.manager';
 
 
 function getter(manager, request) {
@@ -8,5 +9,6 @@ function getter(manager, request) {
 }
 
 export default {
-   getUserManager: getter(userManager)
+   getUserManager: getter(userManager),
+   getProductsManager: getter(productsManager)
 };

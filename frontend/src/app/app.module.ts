@@ -14,6 +14,11 @@ import {AuthInterceptor} from './services/auth/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { AddItemToListComponent } from './components/add-item-to-list/add-item-to-list.component';
 import { HistoryOfDeletedItemsComponent } from './components/history-of-deleted-items/history-of-deleted-items.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { DetailOfOneProductComponent } from './components/detail-of-one-product/detail-of-one-product.component';
+import { UpperTextPipe } from './pipes/upper-text.pipe';
+import { DateFormatPipe } from './pipes/date-format.pipe';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,11 @@ import { HistoryOfDeletedItemsComponent } from './components/history-of-deleted-
     LoginComponent,
     ShoppingListComponent,
     AddItemToListComponent,
-    HistoryOfDeletedItemsComponent
+    HistoryOfDeletedItemsComponent,
+    EditProductComponent,
+    DetailOfOneProductComponent,
+    UpperTextPipe,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -33,6 +42,7 @@ import { HistoryOfDeletedItemsComponent } from './components/history-of-deleted-
     FormsModule
   ],
   providers: [
+    DataService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

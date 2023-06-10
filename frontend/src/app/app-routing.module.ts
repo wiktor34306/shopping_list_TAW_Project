@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -9,6 +7,7 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { AuthGuard } from './services/auth.guard';
 import { AddItemToListComponent } from './components/add-item-to-list/add-item-to-list.component';
 import { HistoryOfDeletedItemsComponent } from './components/history-of-deleted-items/history-of-deleted-items.component';
+import { DetailOfOneProductComponent } from './components/detail-of-one-product/detail-of-one-product.component';
 
 const routes: Routes = [
   {
@@ -38,6 +37,11 @@ const routes: Routes = [
     component: HistoryOfDeletedItemsComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'detail-of-one-product/:id',
+    component: DetailOfOneProductComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
