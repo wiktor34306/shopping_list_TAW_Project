@@ -1,0 +1,44 @@
+<section class="todoapp">
+    <header class="header">
+        <h1>Adding a product to your list</h1>
+    </header>
+</section>
+<form method="post" id="form" (submit)="create()">
+<div class="row">
+  <div class="column">
+    
+        <input type="checkbox" id="priority" [(ngModel)]="product.isImportant" name="isImportant" value="priority">
+        <label for="priority" id="labelowe">Priority: <span style="color: #020023; font-weight: 700">important</span></label><br><br>
+        <label for="data" class="labelinformation">Date</label><br>
+            <input type="date" class="input-properties" [(ngModel)]="product.date" id="data" name="date"><br><br>
+        
+        <label for="titleOfList" class="labelinformation">Title of list</label><br>
+            <input type="text" class="input-properties" [(ngModel)]="product.titleOfList" id="titleOfList" name="titleOfList" size="40" ><br><br>
+        
+        <label for="nameOfProduct" class="labelinformation">Product, which you want to add</label><br>
+            <input type="text" class="input-properties" [(ngModel)]="product.nameOfProduct" id="nameOfProduct" name="nameOfProduct" size="40"><br><br>
+        
+        <label for="amount" class="labelinformation">Amount</label><br>
+            <input type="number" class="input-properties" [(ngModel)]="product.amount" id="amount" name="amount" min="0.1" max="1000000"><br><br>
+        
+        <label for="selectunit" id="unit" class="labelinformation">Unit</label><br>
+        <select id="selectunit" [(ngModel)]="product.unit" name="unit">
+            <option>grams</option>
+            <option>pieces</option>
+            <option>milliliters</option>
+          </select><br>
+        
+  </div>
+  <div class="column">
+    <p class="labelinformation">Preview your list</p>
+    <select multiple id="selectstyle">
+        <option>Panna cotta 75g</option>
+        <option>Tiramisu 150g</option>
+        <option>Creme brulle 100g</option>
+      </select>
+  </div>
+</div>
+<div class="button-div">
+    <button class="button-first"><b>Add to list</b></button>
+</div>
+</form>
