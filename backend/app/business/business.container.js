@@ -1,5 +1,6 @@
 import userManager from './user.manager';
 import productsManager from './products.manager';
+import listManager from './list.manager';
 
 
 function getter(manager, request) {
@@ -10,5 +11,6 @@ function getter(manager, request) {
 
 export default {
    getUserManager: getter(userManager),
-   getProductsManager: getter(productsManager)
+   getProductManager: getter(productsManager),
+   getListManager: getter(listManager)
 };

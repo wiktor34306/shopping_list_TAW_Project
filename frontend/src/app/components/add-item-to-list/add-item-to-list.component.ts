@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { ListService } from 'src/app/services/list.service';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -8,21 +9,40 @@ import { v4 as uuidv4 } from 'uuid';
   templateUrl: './add-item-to-list.component.html',
   styleUrls: ['./add-item-to-list.component.css']
 })
-export class AddItemToListComponent {
-  public product = {
+export class AddItemToListComponent implements OnInit {
+ public list = {
     isImportant: false,
     date: new Date(),
-    titleOfList: '',
+    titleOfList: ''
+  };
+    lists!: any[]
+
+ public product = {
+    listId: '',
     nameOfProduct: '',
-    amount: 0,
+    amount: '',
     unit: '',
-    listId: '' // Dodane pole listId
   };
 
-  constructor(private dataService: DataService, public router: Router) {}
+    ngOnInit(): void {
+    this.getList()    
+    }
 
-  create() {
-    this.product.listId = uuidv4(); // Generowanie unikalnego ID listy
+  constructor(private dataService: DataService, private listService: ListService, public router: Router) {}
+
+  createList(){
+    this.listService.add(this.list).subscribe((result) => { 
+      this.getList()
+    })
+  }
+
+  getList(){
+    this.listService.getAll().subscribe((result) => {
+      this.lists = result
+    })
+  }
+
+  createProduct() {
     this.dataService.add(this.product).subscribe((result) => {
       return result;
       // console.log(result);

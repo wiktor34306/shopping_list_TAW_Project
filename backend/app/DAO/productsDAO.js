@@ -4,14 +4,10 @@ import mongooseUniqueValidator from 'mongoose-unique-validator';
 import { v4 as uuidv4 } from 'uuid';
 
 const productsSchema = new mongoose.Schema({
-  _id: { type: String },
-  isImportant: { type: Boolean },
-  date: { type: Date },
-  titleOfList: { type: String },
+  listId: { type: String },
   nameOfProduct: { type: String },
   amount: { type: Number },
   unit: { type: String },
-  listId: { type: String },
 }, {
   collection: 'products'
 });
@@ -28,7 +24,7 @@ async function query() {
 }
 
 async function get(id) {
-  return ProductModel.findOne({ _id: id }).then(function (result) {
+  return ProductModel.find({ listId: id }).then(function (result) {
     if (result) {
       return mongoConverter(result);
     }
@@ -36,20 +32,20 @@ async function get(id) {
 }
 
 async function createNewOrUpdate(data) {
-  if (!data._id) {
-    data._id = uuidv4();
-  }
+// //   if (!data._id) {
+// //     data._id = uuidv4();
+//   }
 
-  // Sprawdzanie czy istnieje lista o podanej nazwie
-  const existingList = await ProductModel.findOne({ titleOfList: data.titleOfList });
+//   // Sprawdzanie czy istnieje lista o podanej nazwie
+//   const existingList = await ProductModel.findOne({ titleOfList: data.titleOfList });
 
-  if (existingList) {
-    // Jeśli lista już istnieje, przypisz istniejące listId
-    data.listId = existingList.listId;
-  } else {
-    // Jeśli lista nie istnieje, wygeneruj nowe listId
-    data.listId = uuidv4();
-  }
+//   if (existingList) {
+//     // Jeśli lista już istnieje, przypisz istniejące listId
+//     data.listId = existingList.listId;
+//   } else {
+//     // Jeśli lista nie istnieje, wygeneruj nowe listId
+//     data.listId = uuidv4();
+//   }
 
   return new ProductModel(data).save().then(result => {
     if (result) {
@@ -58,8 +54,12 @@ async function createNewOrUpdate(data) {
   });
 }
 
-async function deleteList(id) {
-  return ProductModel.deleteOne({ _id: id });
+async function deleteList(listId) {
+  return ProductModel.findOneAndRemove({ listId: listId }).then(result => {
+    if (result) {
+      return result;
+    }
+  });
 }
 
 export default {

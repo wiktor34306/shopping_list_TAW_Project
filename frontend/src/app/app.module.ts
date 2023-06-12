@@ -13,12 +13,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {AuthInterceptor} from './services/auth/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { AddItemToListComponent } from './components/add-item-to-list/add-item-to-list.component';
-import { HistoryOfDeletedItemsComponent } from './components/history-of-deleted-items/history-of-deleted-items.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
-import { DetailOfOneProductComponent } from './components/detail-of-one-product/detail-of-one-product.component';
 import { UpperTextPipe } from './pipes/upper-text.pipe';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { DataService } from './services/data.service';
+import { DetailOfOneListComponent } from './components/detail-of-one-list/detail-of-one-list.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +28,8 @@ import { DataService } from './services/data.service';
     LoginComponent,
     ShoppingListComponent,
     AddItemToListComponent,
-    HistoryOfDeletedItemsComponent,
     EditProductComponent,
-    DetailOfOneProductComponent,
+    DetailOfOneListComponent,
     UpperTextPipe,
     DateFormatPipe
   ],

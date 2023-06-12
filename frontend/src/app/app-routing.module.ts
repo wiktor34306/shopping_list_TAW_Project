@@ -6,8 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { AuthGuard } from './services/auth.guard';
 import { AddItemToListComponent } from './components/add-item-to-list/add-item-to-list.component';
-import { HistoryOfDeletedItemsComponent } from './components/history-of-deleted-items/history-of-deleted-items.component';
-import { DetailOfOneProductComponent } from './components/detail-of-one-product/detail-of-one-product.component';
+import { DetailOfOneListComponent } from './components/detail-of-one-list/detail-of-one-list.component';
 
 const routes: Routes = [
   {
@@ -33,13 +32,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'history-of-deleted-items',
-    component: HistoryOfDeletedItemsComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'detail-of-one-product/:id',
-    component: DetailOfOneProductComponent,
+    path: 'detail-of-one-list/:id',
+    component: DetailOfOneListComponent,
     canActivate: [AuthGuard]
   }
 ];
