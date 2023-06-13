@@ -87,6 +87,8 @@ export class AddItemToListComponent implements OnInit {
   createList(){
     this.listService.add(this.list).subscribe((result) => {
       this.getList();
+      // Ustaw wartość list.isImportant na podstawie stanu checkboxa
+    this.list.isImportant = this.list.isImportant || false;
     });
   }
 

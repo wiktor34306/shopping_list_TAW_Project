@@ -52,6 +52,25 @@ const listEndpoint = (router) => {
       response.status(500).send('Wystąpił błąd podczas usuwania listy');
     }
   });
-};
 
+  // edycja 
+// router.put('/api/task/:id', async (request, response, next) => {
+//   try {
+//     const id = request.params.id;
+//     const data = request.body;
+
+//     if (!id) {
+//       return response.status(400).send('Invalid task ID');
+//     }
+
+//     const updatedData = Object.assign({ id }, data);
+//     const result = await business.getTaskManager().createNewOrUpdate(updatedData);
+
+//     response.status(200).send(result);
+//   } catch (error) {
+//     console.log(error);
+//     response.status(500).send('An error occurred while updating the task');
+//   }
+// });
+}
 export default listEndpoint;

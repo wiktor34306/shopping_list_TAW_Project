@@ -19,6 +19,7 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 import { DataService } from './services/data.service';
 import { DetailsOfOneListComponent } from './components/details-of-one-list/details-of-one-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { DetailsOfOneListComponent } from './components/details-of-one-list/deta
     EditProductComponent,
     UpperTextPipe,
     DateFormatPipe,
-    DetailsOfOneListComponent
+    DetailsOfOneListComponent,
+
   ],
   imports: [
     BrowserModule,

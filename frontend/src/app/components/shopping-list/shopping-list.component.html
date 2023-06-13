@@ -10,11 +10,12 @@
 
 <div class="task-list-border" *ngFor="let list of lists; let i = index" (listDeleted)="getAll()">
   <div class="item-container">
-    <p>{{ list.titleOfList }}</p>
+    <p>Nazwa listy: {{ list.titleOfList }}</p>
+    <p>Id listy: {{ list.id }}</p>
     <button class="button-type b1" [routerLink]="['/details-of-one-list']">
       <img src="/assets/images/editicon.png" alt="editicon" />
     </button>
-    <button class="button-type b1" (click)="deleteList(list.listId)">
+    <button class="button-type b1" (click)="deleteList(list.id)">
       <img src="/assets/images/deleteicon.png" alt="deleteicon" />
     </button>
     <button class="button-type b1" (click)="hideList(i)">
@@ -22,10 +23,10 @@
     </button>
   </div>
   <div id="ul-products"  *ngIf="showList[i]">
-    <p>Shopping list for the day: <br> {{ list.date | date }}</p>
+    <p>Shopping list for the day: <br> {{ list.date | dateFormat }}</p>
     <ul *ngIf="productItem.length!==0">
       <li *ngFor="let item of productItem[i]">
-        {{ item?.nameOfProduct }} - {{ item?.amount }} {{ item?.unit }}
+        {{ item?.nameOfProduct | upperText }} - {{ item?.amount }} {{ item?.unit }}
       </li>
     </ul>
   </div>

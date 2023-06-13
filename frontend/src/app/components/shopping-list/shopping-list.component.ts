@@ -102,6 +102,7 @@ import { ListService } from 'src/app/services/list.service';
 export class ShoppingListComponent implements OnInit {
  
   public products!: {
+    id: string,
     listId: string,
     nameOfProduct: string,
     amount: number,
@@ -143,6 +144,23 @@ export class ShoppingListComponent implements OnInit {
     
   }
 
+
+  // to jest na pewno do poprawienia, bo lista z bazy się usuwa. Ale produkty, które są na tej liście, zostają w bazie.
+  // w konsoli przeglądarkowej, przy usuwaniu produktu, funkcja korzysta z id listy, a nie produktu. I stąd pewnie jest błąd
+  deleteList(listId: string) {
+    console.log('listId:', listId); // Dodaj tę linię
+    if (listId) {
+      this.listService.deleteList(listId).subscribe(() => {
+        this.getAll();
+      });
+      for(let i = 0; i < this.lists.length; i++){
+        this.service.deleteProduct(this.lists[i].id).subscribe((result) => {
+          this.productItem[i]=result
+      })
+    }
+  }
+}
+
   toggleList(product: {
     listId: string;
     titleOfList: string;
@@ -157,13 +175,5 @@ export class ShoppingListComponent implements OnInit {
     product.showList = !product.showList;
   }
 
-  deleteList(listId: string) {
-    console.log('listId:', listId); // Dodaj tę linię
-    // if (listId) {
-    //   this.service.deleteList(listId).subscribe(() => {
-    //     this.getAll();
-    //   });
-    // }
-  }
   }
 
