@@ -21,5 +21,13 @@ export class DataService {
   add(data: any) {
     return this.http.post<any>(this.url + 'api/product', data);
   }
+
+  deleteProduct(id: string) {
+    return this.http.delete<any>(`${this.url}api/product/${id}`);
+  }
   
+  update(id: string, data: any) {
+    return this.http.put<any>(`${this.url}api/product/${id}`, data);
+  }
+    
 }

@@ -17,7 +17,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { UpperTextPipe } from './pipes/upper-text.pipe';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { DataService } from './services/data.service';
-import { DetailOfOneListComponent } from './components/detail-of-one-list/detail-of-one-list.component';
+import { DetailsOfOneListComponent } from './components/details-of-one-list/details-of-one-list.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +29,9 @@ import { DetailOfOneListComponent } from './components/detail-of-one-list/detail
     ShoppingListComponent,
     AddItemToListComponent,
     EditProductComponent,
-    DetailOfOneListComponent,
     UpperTextPipe,
-    DateFormatPipe
+    DateFormatPipe,
+    DetailsOfOneListComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@
 <div class="task-list-border" *ngFor="let list of lists; let i = index" (listDeleted)="getAll()">
   <div class="item-container">
     <p>{{ list.titleOfList }}</p>
-    <button class="button-type b1">
+    <button class="button-type b1" [routerLink]="['/details-of-one-list']">
       <img src="/assets/images/editicon.png" alt="editicon" />
     </button>
     <button class="button-type b1" (click)="deleteList(list.listId)">

@@ -14,9 +14,10 @@
       <label for="titleOfList" class="labelinformation">Title of list</label><br>
       <input type="text" class="input-properties" [(ngModel)]="list.titleOfList" id="titleOfList" name="titleOfList" size="40" ><br><br>
 
+      <label for="selectList">Select the list to which you want to add the product</label>
       <select id="selectList" name="selectList" [(ngModel)]="product.listId">
         <option *ngFor="let list of lists" [ngValue]="list.id">{{list.titleOfList}}</option>
-      </select>
+      </select><br><br>
         
       <label for="nameOfProduct" class="labelinformation">Product, which you want to add</label><br>
       <input type="text" class="input-properties" [(ngModel)]="product.nameOfProduct" id="nameOfProduct" name="nameOfProduct" size="40"><br><br>
@@ -33,12 +34,17 @@
     </div>
     <div class="column">
       <p class="labelinformation">Preview your list</p>
+
       <select name="products" multiple id="selectstyle">
-        <!-- <optgroup [label]="product.titleOfList"> -->
-          <!-- <option *ngFor="let item of product.items">{{ item.nameOfProduct }} - {{ item.amount }} {{ item.unit }}</option> -->
-        <!-- </optgroup> -->
+        <optgroup *ngFor="let list of lists" [label]="list.titleOfList">
+          <option *ngFor="let product of list.products">
+            {{ product.nameOfProduct }} - {{ product.amount }} {{ product.unit }}
+          </option>
+        </optgroup>
       </select>
+      
     </div>
+
   </div>
   <div class="button-div">
     <button class="button-first" (click)="createList()"><b>Create list</b></button>

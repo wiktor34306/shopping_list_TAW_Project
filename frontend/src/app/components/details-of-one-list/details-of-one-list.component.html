@@ -1,0 +1,44 @@
+<section class="todoapp">
+    <header class="header">
+        <h1>Details of list</h1>
+    </header>
+</section>
+<form method="post" id="form">
+    <!-- <div class="column">
+        <p class="labelinformation">Preview your list</p>
+      
+        <select name="products" multiple id="selectstyle">
+          <optgroup *ngFor="let list of lists" [label]="list.titleOfList">
+            <option *ngFor="let product of list.products">
+              {{ product.nameOfProduct }} - {{ product.amount }} {{ product.unit }}
+              <button (click)="deleteProduct(product)">Delete</button> 
+            </option>
+          </optgroup>
+        </select>
+        
+      </div> -->
+
+    
+      <form method="post" id="form">
+        <div *ngFor="let list of lists">
+          <div class="name-container">
+            <h4>{{ list.titleOfList }}</h4>
+            <button class="btn btn-primary" (click)="editList()">Edytuj nazwę listy</button>
+          </div>
+          <div *ngFor="let product of list.products" class="product-container">
+            <div class="detailContainer">
+              <div class="details">{{ product.nameOfProduct }}</div>
+              <div class="details">{{ product.amount }}</div>
+              <div class="details">{{ product.unit }}</div>
+            </div>
+            <div class="options">
+              <button class="btn btn-success" (click)="editProduct(product)">Edytuj</button>
+              <button class="btn btn-warning" (click)="deleteProduct(product)">Usuń z listy</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+      
+    
+    
