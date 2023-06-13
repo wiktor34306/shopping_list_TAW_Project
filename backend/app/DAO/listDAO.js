@@ -57,7 +57,7 @@ async function createNewOrUpdate(data) {
 }
 
 async function deleteList(listId) {
-  return ListsModel.findOneAndRemove({ listId: listId }).then(result => {
+  return ListsModel.findOneAndRemove({ _id: listId }).then(result => {
     if (result) {
       return result;
     }

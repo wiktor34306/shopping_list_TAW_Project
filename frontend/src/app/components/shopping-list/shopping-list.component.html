@@ -8,7 +8,7 @@
   <button class="button-first" [routerLink]="['/add-item-to-list']"><b>Add shopping item to your list</b></button>
 </div>
 
-<div class="task-list-border" *ngFor="let list of lists; let i = index" (listDeleted)="getAll()">
+<div class="task-list-border" *ngFor="let list of lists; let i = index" [appImportantListFormat]="list.important" (listDeleted)="getAll()">
   <div class="item-container">
     <p>Nazwa listy: {{ list.titleOfList }}</p>
     <p>Id listy: {{ list.id }}</p>
@@ -26,6 +26,7 @@
     <p>Shopping list for the day: <br> {{ list.date | dateFormat }}</p>
     <ul *ngIf="productItem.length!==0">
       <li *ngFor="let item of productItem[i]">
+        {{ item?.id }}
         {{ item?.nameOfProduct | upperText }} - {{ item?.amount }} {{ item?.unit }}
       </li>
     </ul>

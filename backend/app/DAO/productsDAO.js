@@ -54,8 +54,9 @@ async function createNewOrUpdate(data) {
   });
 }
 
-async function deleteList(listId) {
-  return ProductModel.findOneAndRemove({ listId: listId }).then(result => {
+async function deleteProduct(id) {
+  console.log('z productsDAO',id)
+  return ProductModel.findOneAndRemove({ _id: id }).then(result => {
     if (result) {
       return result;
     }
@@ -67,5 +68,5 @@ export default {
   get: get,
   createNewOrUpdate: createNewOrUpdate,
   model: ProductModel,
-  deleteList: deleteList,
+  deleteProduct: deleteProduct
 };

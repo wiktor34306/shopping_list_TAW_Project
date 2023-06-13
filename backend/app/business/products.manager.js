@@ -54,6 +54,7 @@ function create(context) {
     }
 
     async function get(id) {
+        console.log('z product.manager',id)
         let result = await productsDAO.get(id);
         if (result) {
             return result;
@@ -67,18 +68,19 @@ function create(context) {
         }
     }
 
-    async function deleteList(listId) {
-        // if (!isValidObjectId(id)) {
-        //     throw new Error('Nieprawidłowy identyfikator listy');
-        // }
-        return productsDAO.deleteList(listId);
+    async function deleteProduct(id){
+        console.log('z product.manager')
+        let result = await productsDAO.deleteProduct(id);
+        if(result) {
+            return result;
+        }
     }
 
     return {
         query: query,
         get: get,
         createNewOrUpdate: createNewOrUpdate,
-        deleteList: deleteList,
+        deleteProduct: deleteProduct
     };
 }
 

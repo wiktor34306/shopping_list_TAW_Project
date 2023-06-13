@@ -113,4 +113,18 @@ export class AddItemToListComponent implements OnInit {
     });
     this.router.navigate(['/shopping-list']);
   }
+
+
+sortTasks() {
+  this.lists.sort((a, b) => {
+    // Sortowanie po atrybucie 'important'
+    if (a.important && !b.important) {
+      return -1;
+    } else if (!a.important && b.important) {
+      return 1;
+    } else {
+      return 0; // Dodaj tę linię
+    }
+  });
+}
 }

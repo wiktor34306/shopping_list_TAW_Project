@@ -1,22 +1,27 @@
-// import { Directive, ElementRef, Input, OnChanges, Host, Inject, Optional } from '@angular/core';
-// import { AddItemToListComponent } from '../components/add-item-to-list/add-item-to-list.component';
+import { Directive, ElementRef, Input, OnChanges, Host, Inject, Optional } from '@angular/core';
+import { AddItemToListComponent } from '../components/add-item-to-list/add-item-to-list.component';
 
-// @Directive({
-//   selector: '[appImportantListFormat]'
-// })
-// export class ImportantListFormat implements OnInit {
-//   @Input() isImportant: boolean;
+@Directive({
+  selector: '[appImportantListFormat]'
+})
 
-//   constructor(private elementRef: ElementRef, 
-//     @Host() @Optional() @Inject(AddItemToListComponent) private taskList: AddItemToListComponent
-//   ) {}
+export class ImportantListFormatDirective implements OnChanges {
+  @Input('appImportantListFormat') important!: boolean;
 
-//   ngOnInit() {
-//     if (this.isImportant) {
-//       this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', '#FFCDD2');
-//       this.renderer.setStyle(this.elementRef.nativeElement, 'color', '#B71C1C');
-//       this.renderer.setStyle(this.elementRef.nativeElement, 'font-size', '18px');
-//       this.renderer.setStyle(this.elementRef.nativeElement, 'box-shadow', '0 2px 4px 0 rgba(0, 0, 0, 0.2)');
-//     }
-//   }
-// }
+  constructor(
+    private elementRef: ElementRef,
+    @Host() @Optional() @Inject(AddItemToListComponent) private taskList: AddItemToListComponent
+  ) {}
+
+  ngOnChanges() {
+    if (this.important) {
+      this.elementRef.nativeElement.style.backgroundColor = '#a17763';
+    } else {
+      this.elementRef.nativeElement.style.backgroundColor = '';
+    }
+
+    if (this.taskList) {
+      this.taskList.sortTasks();
+    }
+  }
+}

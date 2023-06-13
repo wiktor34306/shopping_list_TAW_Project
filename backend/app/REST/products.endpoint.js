@@ -17,6 +17,7 @@ const productsEndpoint = (router) => {
   router.get("/api/product/:id", async (request, response, next) => {
     try {
       const id = request.params.id;
+      console.log(id)
       const result = await business.getProductManager().get(id);
       response.status(200).send(result);
     } catch (error) {
@@ -33,6 +34,23 @@ const productsEndpoint = (router) => {
     } catch (error) {
       console.log(error);
       response.status(500).send("Wystąpił błąd podczas tworzenia/aktualizacji produktu");
+    }
+  });
+
+  router.delete('/api/product/:id', async (request, response, next) => {
+    try {
+      const id = request.params.id;
+      console.log('z products.endpoint',id)
+      if (!id) {
+        return response.status(400).send('Nieprawidłowy identyfikator produktu');
+      }
+  
+      await business.getProductManager().deleteProduct(id);
+  
+      response.status(200).send('Produkt został pomyślnie usunięty');
+    } catch (error) {
+      console.log(error);
+      response.status(500).send('Wystąpił błąd podczas usuwania produktu');
     }
   });
   

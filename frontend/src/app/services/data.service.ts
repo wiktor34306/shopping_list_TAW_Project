@@ -23,7 +23,8 @@ export class DataService {
   }
 
   deleteProduct(id: string) {
-    return this.http.delete<any>(`${this.url}api/product/${id}`);
+    return this.http.delete<any>(this.url + 'api/product/' + id);
+    // return this.http.delete<any>(`${this.url}api/product/${id}`);
   }
   
   update(id: string, data: any) {

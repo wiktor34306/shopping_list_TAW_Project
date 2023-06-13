@@ -148,18 +148,39 @@ export class ShoppingListComponent implements OnInit {
   // to jest na pewno do poprawienia, bo lista z bazy się usuwa. Ale produkty, które są na tej liście, zostają w bazie.
   // w konsoli przeglądarkowej, przy usuwaniu produktu, funkcja korzysta z id listy, a nie produktu. I stąd pewnie jest błąd
   deleteList(listId: string) {
-    console.log('listId:', listId); // Dodaj tę linię
+    console.log('listId:', listId);
+  
     if (listId) {
-      this.listService.deleteList(listId).subscribe(() => {
-        this.getAll();
-      });
-      for(let i = 0; i < this.lists.length; i++){
-        this.service.deleteProduct(this.lists[i].id).subscribe((result) => {
-          this.productItem[i]=result
-      })
+      // Usuń produkty powiązane z listą
+      // console.log(this.productItem[0])
+      // console.log(this.productItem[0].length)
+      for (let i = 0; i < this.productItem[0].length; i++) {
+        console.log('w pętli')
+        if (this.productItem[0][i].listId == listId) {
+          const productId = this.productItem[0][i].id;
+          this.service.deleteProduct(productId).subscribe(() => {
+            console.log(`Product with ID ${productId} deleted.`);
+          });
+        }
+      }
+
+      // this.service.deleteProduct('6488c672cf4b5bdea3aff963').subscribe(() => {
+      //   console.log(`Product with ID ${'6488c672cf4b5bdea3aff963'} deleted.`);
+      // });
+      // Usuń listę
+        console.log('usuwanie listy')
+      this.listService.deleteList(listId).subscribe(
+        () => {
+          console.log(`List with ID ${listId} deleted.`);
+          this.getAllList();
+        },
+        (error) => {
+          console.log('Error:', error);
+        }
+      );
     }
   }
-}
+  
 
   toggleList(product: {
     listId: string;
