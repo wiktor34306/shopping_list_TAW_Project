@@ -26,6 +26,18 @@ const productsEndpoint = (router) => {
     }
   });
 
+  router.get("/api/product1/:id", async (request, response, next) => {
+    try {
+      const id = request.params.id;
+      console.log(id)
+      const result = await business.getProductManager().getProductById(id);
+      response.status(200).send(result);
+    } catch (error) {
+      console.log(error);
+      response.status(500).send("Wystąpił błąd podczas pobierania produktu");
+    }
+  });
+
   router.post("/api/product", async (request, response, next) => {
     try {
       const data = request.body;
@@ -45,9 +57,9 @@ const productsEndpoint = (router) => {
         return response.status(400).send('Nieprawidłowy identyfikator produktu');
       }
   
-      await business.getProductManager().deleteProduct(id);
+      const result = await business.getProductManager().deleteProduct(id)
   
-      response.status(200).send('Produkt został pomyślnie usunięty');
+      response.status(200).send(result);
     } catch (error) {
       console.log(error);
       response.status(500).send('Wystąpił błąd podczas usuwania produktu');

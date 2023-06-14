@@ -1,1 +1,27 @@
-<p>edit-product works!</p>
+<section class="todoapp">
+    <header class="header">
+        <h1>Adding a product to your list</h1>
+    </header>
+</section>
+<form method="post" id="form">
+  <div class="row">
+    <div class="column">
+      <label for="nameOfProduct" class="labelinformation">Product, which you want to add</label><br>
+      <input type="text" class="input-properties" [(ngModel)]="product.nameOfProduct" id="nameOfProduct" name="nameOfProduct" size="40"><br><br>
+        
+      <label for="amount" class="labelinformation">Amount</label><br>
+      <input type="number" class="input-properties" [(ngModel)]="product.amount" id="amount" name="amount" min="0.1" max="1000000"><br><br>
+        
+      <label for="selectunit" id="unit" class="labelinformation">Unit</label><br>
+      <select id="selectunit" [(ngModel)]="product.unit" name="unit">
+        <option [ngValue]="'grams'">grams</option>
+        <option [ngValue]="'pieces'">pieces</option>
+        <option [ngValue]="'milliliters'">milliliters</option>
+      </select><br>
+    </div>
+
+  </div>
+  <div class="button-div">
+    <button class="button-first" (click)="updateData()"><b>Update product</b></button>
+  </div>
+</form>

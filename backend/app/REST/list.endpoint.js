@@ -44,9 +44,9 @@ const listEndpoint = (router) => {
         return response.status(400).send('Nieprawidłowy identyfikator listy');
       }
   
-      await business.getListManager().deleteList(id);
+      const result = await business.getListManager().deleteList(id)
   
-      response.status(200).send('Lista została pomyślnie usunięta');
+      response.status(200).send(result);
     } catch (error) {
       console.log(error);
       response.status(500).send('Wystąpił błąd podczas usuwania listy');
@@ -54,23 +54,33 @@ const listEndpoint = (router) => {
   });
 
   // edycja 
-// router.put('/api/task/:id', async (request, response, next) => {
-//   try {
-//     const id = request.params.id;
-//     const data = request.body;
+  router.put('/api/list/:id', async (request, response, next) => {
+    try {
+      const id = request.params.id;
+      const { titleOfList } = request.body;
+  
+      if (!id) {
+        return response.status(400).send('Nieprawidłowy identyfikator listy');
+      }
+  
+      if (!titleOfList) {
+        return response.status(400).send('Nieprawidłowa nazwa listy');
+      }
+  
+      const updatedList = await business.getListManager().updateListTitle(id, titleOfList);
+  
+      if (!updatedList) {
+        return response.status(404).send('Nie znaleziono listy');
+      }
+  
+      response.status(200).send(updatedList);
+    } catch (error) {
+      console.log(error);
+      response.status(500).send('Wystąpił błąd podczas aktualizowania nazwy listy');
+    }
+  });
+  
+  
 
-//     if (!id) {
-//       return response.status(400).send('Invalid task ID');
-//     }
-
-//     const updatedData = Object.assign({ id }, data);
-//     const result = await business.getTaskManager().createNewOrUpdate(updatedData);
-
-//     response.status(200).send(result);
-//   } catch (error) {
-//     console.log(error);
-//     response.status(500).send('An error occurred while updating the task');
-//   }
-// });
 }
 export default listEndpoint;

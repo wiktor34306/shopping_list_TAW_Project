@@ -1,0 +1,21 @@
+<section class="todoapp">
+    <header class="header">
+        <h1>Adding a product to your list</h1>
+    </header>
+</section>
+<form method="post" id="form">
+  <div class="row">
+    <div class="column">
+      <input type="checkbox" id="priority" [(ngModel)]="list.isImportant" name="isImportant" value="priority">
+      <label for="priority" id="labelowe">Priority: <span style="color: #020023; font-weight: 700">important</span></label><br><br>
+      <label for="data" class="labelinformation">Date</label><br>
+      <input type="date" class="input-properties" [(ngModel)]="list.date" id="data" name="date"><br><br>
+        
+      <label for="titleOfList" class="labelinformation">Title of list</label><br>
+      <input type="text" class="input-properties" [(ngModel)]="list.titleOfList" id="titleOfList" name="titleOfList" size="40" ><br><br>
+</div>
+</div>
+  <div class="button-div">
+    <button class="button-first" (click)="updateData()"><b>Update name list</b></button>
+  </div>
+</form>

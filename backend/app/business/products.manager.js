@@ -61,6 +61,13 @@ function create(context) {
         }
     }
 
+    async function getProductById(id) {
+        let result = await productsDAO.getProductById(id);
+        if (result) {
+            return result;
+        }
+    }
+
     async function createNewOrUpdate(data) {
         let result = await productsDAO.createNewOrUpdate(data);
         if (result) {
@@ -80,7 +87,8 @@ function create(context) {
         query: query,
         get: get,
         createNewOrUpdate: createNewOrUpdate,
-        deleteProduct: deleteProduct
+        deleteProduct: deleteProduct,
+        getProductById
     };
 }
 

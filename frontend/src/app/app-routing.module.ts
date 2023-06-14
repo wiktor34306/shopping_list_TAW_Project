@@ -7,6 +7,8 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { AuthGuard } from './services/auth.guard';
 import { AddItemToListComponent } from './components/add-item-to-list/add-item-to-list.component';
 import { DetailsOfOneListComponent } from './components/details-of-one-list/details-of-one-list.component';
+import { EditNameListComponent } from './components/edit-name-list/edit-name-list.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,16 @@ const routes: Routes = [
     component: DetailsOfOneListComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'edit-name-list/:id',
+    component: EditNameListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-product/:id',
+    component: EditProductComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

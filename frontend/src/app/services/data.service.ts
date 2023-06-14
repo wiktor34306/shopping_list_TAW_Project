@@ -18,6 +18,10 @@ export class DataService {
     return this.http.get<any>(this.url + 'api/product/' + id);
   }
 
+  getProductById(id: string) {
+    return this.http.get<any>(this.url + 'api/product1/' + id);
+  }
+
   add(data: any) {
     return this.http.post<any>(this.url + 'api/product', data);
   }

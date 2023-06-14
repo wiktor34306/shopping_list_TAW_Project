@@ -8,7 +8,7 @@
   <button class="button-first" [routerLink]="['/add-item-to-list']"><b>Add shopping item to your list</b></button>
 </div>
 
-<div class="task-list-border" *ngFor="let list of lists; let i = index" (listDeleted)="getAll()">
+<div class="task-list-border" *ngFor="let list of lists; let i = index" (listDeleted)="getAll()" appImportantListFormat [important]="list.isImportant">
   <div class="item-container">
     <p>{{ list.titleOfList }}</p>
     <button class="button-type b1" [routerLink]="['/details-of-one-list']">

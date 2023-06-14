@@ -24,5 +24,10 @@ export class ListService {
 
   deleteList(listId: string) {
     return this.http.delete<any>(`${this.url}api/list/${listId}`);
-  }  
+  }
+  
+  updateListTitle(listId: string, newTitle: string) {
+    const data = { titleOfList: newTitle };
+    return this.http.put<any>(`${this.url}api/list/${listId}`, data);
+  }
 }
