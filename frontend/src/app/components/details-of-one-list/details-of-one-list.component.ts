@@ -32,12 +32,6 @@ export class DetailsOfOneListComponent implements OnInit {
 
   constructor(private dataService: DataService, private listService: ListService, public router: Router) {}
 
-  createList(){
-    this.listService.add(this.list).subscribe((result) => {
-      this.getList();
-    });
-  }
-
   getList(){
     this.listService.getAll().subscribe((result) => {
       this.lists = result;
@@ -51,19 +45,6 @@ export class DetailsOfOneListComponent implements OnInit {
     this.dataService.getById(list.id).subscribe((result) => {
       list.products = result; // Przypisz pobrane produkty do właściwości products dla danej listy
     });
-  }
-
-  createProduct() {
-    this.dataService.add(this.product).subscribe((result) => {
-      this.getProductsForList(this.list); // Pobierz ponownie produkty dla aktualnej listy po dodaniu nowego produktu
-      return result;
-    });
-    this.product = { // Zresetuj obiekt produktu po dodaniu
-      listId: '',
-      nameOfProduct: '',
-      amount: '',
-      unit: '',
-    };
   }
 
   deleteProduct(product: any) {

@@ -18,7 +18,8 @@ import { UpperTextPipe } from './pipes/upper-text.pipe';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { DataService } from './services/data.service';
 import { DetailsOfOneListComponent } from './components/details-of-one-list/details-of-one-list.component';
-import { ImportantListFormatDirective } from './directives/important-list-format.directive';
+// import { ImportantListFormatDirective } from './directives/important-list-format.directive';
+// import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -34,14 +35,15 @@ import { ImportantListFormatDirective } from './directives/important-list-format
     UpperTextPipe,
     DateFormatPipe,
     DetailsOfOneListComponent,
-    ImportantListFormatDirective
+    // ImportantListFormatDirective
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    // MatDialogModule,
   ],
   providers: [
     DataService,
