@@ -38,7 +38,7 @@ function create(context) {
     get: get,
     createNewOrUpdate: createNewOrUpdate,
     deleteList: deleteList,
-    updateListTitle: updateListTitle, // Dodajemy nową metodę updateListTitle
+    updateListTitle: updateListTitle,
   };
 }
 

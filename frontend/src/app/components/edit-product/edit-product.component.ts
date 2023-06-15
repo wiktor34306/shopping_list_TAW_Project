@@ -42,7 +42,7 @@ export class EditProductComponent {
   updateData(){
     const data = {...this.productData, ...this.product}
     this.productService.add(data).subscribe(() => {
-
+      this.router.navigate(['/details-of-one-list'])
     })
     }
   }

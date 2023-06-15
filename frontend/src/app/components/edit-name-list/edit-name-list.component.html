@@ -1,6 +1,6 @@
 <section class="todoapp">
     <header class="header">
-        <h1>Adding a product to your list</h1>
+        <h1>Editing the list data</h1>
     </header>
 </section>
 <form method="post" id="form">
@@ -11,11 +11,11 @@
       <label for="data" class="labelinformation">Date</label><br>
       <input type="date" class="input-properties" [(ngModel)]="list.date" id="data" name="date"><br><br>
         
-      <label for="titleOfList" class="labelinformation">Title of list</label><br>
+      <label for="titleOfList" class="labelinformation">New title of list</label><br>
       <input type="text" class="input-properties" [(ngModel)]="list.titleOfList" id="titleOfList" name="titleOfList" size="40" ><br><br>
 </div>
 </div>
   <div class="button-div">
-    <button class="button-first" (click)="updateData()"><b>Update name list</b></button>
+    <button class="button-first" (click)="updateData()"><b>Update list</b></button>
   </div>
 </form>

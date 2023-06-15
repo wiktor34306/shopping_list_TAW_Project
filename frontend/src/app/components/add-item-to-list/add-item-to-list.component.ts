@@ -1,56 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
-// import { DataService } from 'src/app/services/data.service';
-// import { ListService } from 'src/app/services/list.service';
-// import { v4 as uuidv4 } from 'uuid';
-
-// @Component({
-//   selector: 'add-item-to-list',
-//   templateUrl: './add-item-to-list.component.html',
-//   styleUrls: ['./add-item-to-list.component.css']
-// })
-// export class AddItemToListComponent implements OnInit {
-//  public list = {
-//     isImportant: false,
-//     date: new Date(),
-//     titleOfList: ''
-//   };
-//     lists!: any[]
-
-//  public product = {
-//     listId: '',
-//     nameOfProduct: '',
-//     amount: '',
-//     unit: '',
-//   };
-
-//     ngOnInit(): void {
-//     this.getList()    
-//     }
-
-//   constructor(private dataService: DataService, private listService: ListService, public router: Router) {}
-
-//   createList(){
-//     this.listService.add(this.list).subscribe((result) => { 
-//       this.getList()
-//     })
-//   }
-
-//   getList(){
-//     this.listService.getAll().subscribe((result) => {
-//       this.lists = result
-//     })
-//   }
-
-//   createProduct() {
-//     this.dataService.add(this.product).subscribe((result) => {
-//       return result;
-//       // console.log(result);
-//     });
-//     this.router.navigate(['/shopping-list']);
-//   }
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
@@ -92,6 +39,8 @@ export class AddItemToListComponent implements OnInit {
     });
   }
 
+  
+
   getList(){
     this.listService.getAll().subscribe((result) => {
       this.lists = result;
@@ -114,17 +63,4 @@ export class AddItemToListComponent implements OnInit {
     this.router.navigate(['/shopping-list']);
   }
 
-
-sortTasks() {
-  this.lists.sort((a, b) => {
-    // Sortowanie po atrybucie 'important'
-    if (a.important && !b.important) {
-      return -1;
-    } else if (!a.important && b.important) {
-      return 1;
-    } else {
-      return 0; // Dodaj tę linię
-    }
-  });
-}
 }

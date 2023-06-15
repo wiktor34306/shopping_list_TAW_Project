@@ -91,9 +91,12 @@ img{
   }
   
   #ul-products {
-    margin-top: 10px; /* Dodatkowy margines na górę */
+    margin-top: 10px;
     width: 20%;
   }
-  
+ 
+#header {
+    font-size: 14pt;
+}
   
   

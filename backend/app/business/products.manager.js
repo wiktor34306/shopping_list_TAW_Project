@@ -88,7 +88,7 @@ function create(context) {
         get: get,
         createNewOrUpdate: createNewOrUpdate,
         deleteProduct: deleteProduct,
-        getProductById
+        getProductById // to jest to samo, co getProductById: getProductById:
     };
 }
 

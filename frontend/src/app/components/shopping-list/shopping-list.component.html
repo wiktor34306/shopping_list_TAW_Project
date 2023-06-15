@@ -1,11 +1,11 @@
 <section class="todoapp">
   <header class="header">
-    <h1>Your list</h1>
+    <h1>Your lists</h1>
   </header>
 </section>
 
 <div class="button-div">
-  <button class="button-first" [routerLink]="['/add-item-to-list']"><b>Add shopping item to your list</b></button>
+  <button class="button-first" [routerLink]="['/add-item-to-list']"><b>Click to create your list or add shopping item to your list </b></button>
 </div>
 
 <div class="task-list-border" *ngFor="let list of lists; let i = index" (listDeleted)="getAll()" appImportantListFormat [important]="list.isImportant">
@@ -22,7 +22,7 @@
     </button>
   </div>
   <div id="ul-products" *ngIf="showList[i]">
-    <p>Shopping list for the day: <br> {{ list.date | dateFormat }}</p>
+    <p id="header">Shopping list for the day: <br> {{ list.date | dateFormat }}</p>
     <ul *ngIf="productItem.length !== 0">
       <li *ngFor="let item of productItem[i]">
         {{ item?.nameOfProduct | upperText }} - {{ item?.amount }} {{ item?.unit }}

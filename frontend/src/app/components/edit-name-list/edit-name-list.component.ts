@@ -49,7 +49,7 @@ export class EditNameListComponent implements OnInit {
   updateData(){
     const data = {...this.listData, ...this.list}
     this.listService.add(data).subscribe(() => {
-
+      this.router.navigate(['/details-of-one-list'])
     })
     }
   }

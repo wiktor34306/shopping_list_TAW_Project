@@ -1,13 +1,13 @@
 <section class="todoapp">
     <header class="header">
-        <h1>Details of list</h1>
+        <h1>Details of lists</h1>
     </header>
 </section>    
       <form method="post" id="form">
         <div *ngFor="let list of lists">
           <div class="name-container">
             <h4>{{ list.titleOfList }}</h4>
-            <button class="btn btn-primary" (click)="navigateToListEdit(list.id)">Edytuj nazwę listy</button>
+            <button class="btn btn-primary" (click)="navigateToListEdit(list.id)">Edit name of list</button>
           </div>
           <div *ngFor="let product of list.products" class="product-container">
             <div class="detailContainer">
@@ -16,8 +16,8 @@
               <div class="details">{{ product.unit }}</div>
             </div>
             <div class="options">
-              <button class="btn btn-success" (click)="navigateToProductEdit(product.id)">Edytuj</button>
-              <button class="btn btn-warning" (click)="deleteProduct(product)">Usuń z listy</button>
+              <button class="btn btn-success" (click)="navigateToProductEdit(product.id)">Edit</button>
+              <button class="btn btn-warning" (click)="deleteProduct(product)">Remove from the list</button>
             </div>
           </div>
         </div>

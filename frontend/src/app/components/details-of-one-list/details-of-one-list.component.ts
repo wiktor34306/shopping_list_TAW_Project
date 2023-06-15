@@ -14,10 +14,10 @@ export class DetailsOfOneListComponent implements OnInit {
     isImportant: false,
     date: new Date(),
     titleOfList: '',
-    products: [] // Dodaj właściwość products do listy
+    products: [] //  właściwość products do listy
   };
   public lists!: any[];
-  public selectedProduct: any; // Dodaj zmienną selectedProduct
+  public selectedProduct: any;
 
   public product = {
     listId: '',
